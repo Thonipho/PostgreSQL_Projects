@@ -76,7 +76,7 @@ VALUES ('Thoni', 'Mav', 'Male', 'Midrand,Gauteng', 'thoni@gmail.com', 1, 1, 1, 2
 ('Mnqobi', 'Buze', 'Male', 'Pineville, Durban', 'buze@hotmail.com', 3, 3, 3, 1 ),
 ('Parresen', 'Milner', 'Male', 'Lansa, Western Cape', 'milner@gmail.com', 2, 3, 3, 2 ),
 ('Ofentse', 'Mad', 'Female', 'Sandton, Gauteng', 'ofentse@icloud.com', 1, 2, 2, 3 ),
-('Jabu', 'Mahlangu', 'Male', 'Kiyela, Durban', 'jabu@hotmail.com', 3, 4, 4, 3);
+('Jabu', 'Mahlangu', 'Male', 'Kiyela, Durban', 'jabu@hotmail.com', 3, 4, 4, 2);
 
 select emp_id,first_name,surname,gender,address,email,
 depart_name,depart_city,emprole,salary,overtime_hours,bonus

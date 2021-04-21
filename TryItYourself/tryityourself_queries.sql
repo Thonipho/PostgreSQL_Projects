@@ -11,7 +11,7 @@
 2. INSERT INTO animal_kind (kind, weight)
    VALUES ('dog', 111),
    ('lion', 232),
-   ('elephant', 433);
+   ('elephant', 432);
 
    INSERT INTO animal_species(habitat, food)
    VALUES ('domestic', 'omnivore'),
