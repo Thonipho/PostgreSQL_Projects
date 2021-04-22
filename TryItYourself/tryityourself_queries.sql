@@ -1,19 +1,21 @@
---tryityourself page 45
+--tryityourself chapter 1
 
-1. CREATE TABLE animal_kind (
+1.
+CREATE TABLE animal_kind (
    kind varchar,
    weight numeric);
 
-   CREATE TABLE animal_species(
+CREATE TABLE animal_species(
    habitat varchar,
    food varchar)
 
-2. INSERT INTO animal_kind (kind, weight)
+2. 
+INSERT INTO animal_kind (kind, weight)
    VALUES ('dog', 111),
    ('lion', 232),
    ('elephant', 432);
 
-   INSERT INTO animal_species(habitat, food)
+INSERT INTO animal_species(habitat, food)
    VALUES ('domestic', 'omnivore'),
    ('safari', 'carnivore'),
    ('safari', 'herbivore');
@@ -22,62 +24,75 @@ SELECT * FROM animal_kind
 
 SELECT * FROM animal_species
 
---tryityourself page 57
+--tryityourself chapter 2
 
-1. SELECT last_name, school
-   FROM teachers
-   ORDER BY last_name;
+1. 
+SELECT last_name, school
+FROM teachers
+ORDER BY last_name;
 
-2. SELECT first_name, last_name
-   FROM teachers
-   WHERE first_name LIKE 's%' AND salary>40000;
+2.
+SELECT first_name, last_name
+FROM teachers
+WHERE first_name LIKE 's%' AND salary>40000;
 
-3. SELECT first_name, last_name
-   FROM teachers
-   WHERE hire_date>'2010-01-01'
-   ORDER BY salary DESC;
+3. 
+SELECT first_name, last_name
+FROM teachers
+WHERE hire_date>'2010-01-01'
+ORDER BY salary DESC;
 
---tryityourself page 72
+--tryityourself chapter 3
 
---1. I would use numeric or decimal because miles have decimal points 
---2. Varchar would be the correct data type to use. Seperating first name and last name makes the data more accurate and it saves storage.
---3. You will get an error
+1.
+--I would use numeric or decimal because miles have decimal points 
+2.
+--Varchar would be the correct data type to use. Seperating first name and last name makes the data more accurate and it saves storage.
+3.
+--You will get an error
 
---tryityourself page 89
+--tryityourself chapter 4
 
-1. CREATE TABLE movies (id integer,
-   movie varchar, actor varchar);
+1. 
+CREATE TABLE movies (id integer,
+movie varchar, actor varchar);
    
-   COPY movies 
-   FROM 'C:\Users\User\Desktop\Code College\PostgreSQL/Analysis/movies.csv'
-   WITH (FORMAT CSV, HEADER)
+COPY movies 
+FROM 'C:\Users\User\Desktop\Code College\PostgreSQL/Analysis/movies.csv'
+WITH (FORMAT CSV, HEADER)
 
-2.COPY (
-  SELECT geo_name, housing_unit_count_100_percent, geo_name
-  FROM us_counties_2010
-  LIMIT 20
-  )
-  TO 'C:\Users\User\Desktop\Code College\PostgreSQL/Analysis\housing_units.txt'
-  WITH (FORMAT CSV, HEADER, DELIMITER '|');
+2.
+COPY (
+SELECT geo_name, housing_unit_count_100_percent, geo_name
+FROM us_counties_2010
+LIMIT 20
+)
+TO 'C:\Users\User\Desktop\Code College\PostgreSQL/Analysis\housing_units.txt'
+WITH (FORMAT CSV, HEADER, DELIMITER '|');
   
-3. It will operate
+3. 
+It will operate
 
---tryityourself page 106
-1. SELECT PI()*5^2 AS "Circle area"
+--tryityourself chapter 5
+1. 
+SELECT PI()*5^2 AS "Circle area"
 
-2. SELECT geo_name,(CAST (p0010004 AS numeric(8,1)) / p0010001) * 100 AS "American
-   Indian/Alaska Native Alone"
-	FROM us_counties_2010
-	ORDER BY "American
-   Indian/Alaska Native Alone" DESC;
+2. 
+SELECT geo_name,(CAST (p0010004 AS numeric(8,1)) / p0010001) * 100 AS "American
+Indian/Alaska Native Alone"
+FROM us_counties_2010
+ORDER BY "American
+Indian/Alaska Native Alone" DESC;
 	
-3. --yes
+3.
+--yes
 
 EXPLAIN ANALYZE SELECT * FROM animal_kind
 WHERE kind = 'lion';
 
---tryityourself page 126
-1. SELECT c2010.geo_name,
+--tryityourself chapter 6
+1. 
+SELECT c2010.geo_name,
        c2000.geo_name,
        c2000.state_us_abbreviation
 FROM us_counties_2010 c2010 RIGHT JOIN us_counties_2000 c2000
@@ -105,8 +120,9 @@ ON c2010.state_fips = c2000.state_fips
    AND c2010.county_fips = c2000.county_fips
 ORDER BY pct_change ASC;
 
---tryityourself page 147
-1. CREATE TABLE albums (
+--tryityourself chapter 7
+1. 
+CREATE TABLE albums (
 album_id bigserial,
 album_catalog_code varchar(100),
 album_title text,
@@ -125,11 +141,13 @@ CONSTRAINTS sng_key PRIMARY KEY(song_id)
 album_id bigint REFERENCES albums(album_id)
 );
  
-2. --Album description because every album will have its own unique description
+2. 
+--Album description because every album will have its own unique description
 
-3.--album_id and song_id
+3.
+--album_id and song_id
 
---tryityourself page 153
+--tryityourself chapter 8
 
 ALTER TABLE meat_poultry_egg_inspect ADD COLUMN meat_processing boolean;
 ALTER TABLE meat_poultry_egg_inspect ADD COLUMN poultry_processing boolean;
@@ -152,8 +170,9 @@ FROM meat_poultry_egg_inspect
 WHERE meat_processing = TRUE AND
       poultry_processing = TRUE;
 
---tryityourself page 163
-1. SELECT pls14.stabr,
+--tryityourself chapter 9
+1. 
+SELECT pls14.stabr,
        sum(pls14.gpterms) AS internet_computers_2014,
        sum(pls09.gpterms) AS internet_computers_2009,
        round( (CAST(sum(pls14.gpterms) AS decimal(10,1)) - sum(pls09.gpterms)) /
@@ -168,7 +187,8 @@ WHERE pls14.gpterms >= 0 AND pls09.gpterms >= 0
 GROUP BY pls14.stabr
 ORDER BY pct_change_computers DESC;
 
-2.CREATE TABLE obereg_codes (
+2.
+CREATE TABLE obereg_codes (
     obereg varchar(2) CONSTRAINT obereg_key PRIMARY KEY,
     region varchar(50)
 );
@@ -197,4 +217,5 @@ WHERE pls14.visits >= 0 AND pls09.visits >= 0
 GROUP BY obereg_codes.region
 ORDER BY pct_change DESC;
 
-3. -- outer join
+3.
+-- outer join
