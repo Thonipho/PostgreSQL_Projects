@@ -241,3 +241,556 @@ WHERE geo_name ILIKE '%mill%'
 )
 TO 'C:\Users\User\Desktop\Code College\PostgreSQL/Analysis\us_counties_mill_export.txt'
 WITH (FORMAT CSV, HEADER, DELIMITER '|');
+
+-- Listing 8-1: Creating and filling the 2014 Public Libraries Survey table
+SELECT * FROM pls_fy2014_pupld14a 
+
+CREATE TABLE pls_fy2014_pupld14a (
+    stabr varchar(2) NOT NULL,
+    fscskey varchar(6) CONSTRAINT fscskey2014_key PRIMARY KEY,
+    libid varchar(20) NOT NULL,
+    libname varchar(100) NOT NULL,
+    obereg varchar(2) NOT NULL,
+    rstatus integer NOT NULL,
+    statstru varchar(2) NOT NULL,
+    statname varchar(2) NOT NULL,
+    stataddr varchar(2) NOT NULL,
+    longitud numeric(10,7) NOT NULL,
+    latitude numeric(10,7) NOT NULL,
+    fipsst varchar(2) NOT NULL,
+    fipsco varchar(3) NOT NULL,
+    address varchar(35) NOT NULL,
+    city varchar(20) NOT NULL,
+    zip varchar(5) NOT NULL,
+    zip4 varchar(4) NOT NULL,
+    cnty varchar(20) NOT NULL,
+    phone varchar(10) NOT NULL,
+    c_relatn varchar(2) NOT NULL,
+    c_legbas varchar(2) NOT NULL,
+    c_admin varchar(2) NOT NULL,
+    geocode varchar(3) NOT NULL,
+    lsabound varchar(1) NOT NULL,
+    startdat varchar(10),
+    enddate varchar(10),
+    popu_lsa integer NOT NULL,
+    centlib integer NOT NULL,
+    branlib integer NOT NULL,
+    bkmob integer NOT NULL,
+    master numeric(8,2) NOT NULL,
+    libraria numeric(8,2) NOT NULL,
+    totstaff numeric(8,2) NOT NULL,
+    locgvt integer NOT NULL,
+    stgvt integer NOT NULL,
+    fedgvt integer NOT NULL,
+    totincm integer NOT NULL,
+    salaries integer,
+    benefit integer,
+    staffexp integer,
+    prmatexp integer NOT NULL,
+    elmatexp integer NOT NULL,
+    totexpco integer NOT NULL,
+    totopexp integer NOT NULL,
+    lcap_rev integer NOT NULL,
+    scap_rev integer NOT NULL,
+    fcap_rev integer NOT NULL,
+    cap_rev integer NOT NULL,
+    capital integer NOT NULL,
+    bkvol integer NOT NULL,
+    ebook integer NOT NULL,
+    audio_ph integer NOT NULL,
+    audio_dl float NOT NULL,
+    video_ph integer NOT NULL,
+    video_dl float NOT NULL,
+    databases integer NOT NULL,
+    subscrip integer NOT NULL,
+    hrs_open integer NOT NULL,
+    visits integer NOT NULL,
+    referenc integer NOT NULL,
+    regbor integer NOT NULL,
+    totcir integer NOT NULL,
+    kidcircl integer NOT NULL,
+    elmatcir integer NOT NULL,
+    loanto integer NOT NULL,
+    loanfm integer NOT NULL,
+    totpro integer NOT NULL,
+    totatten integer NOT NULL,
+    gpterms integer NOT NULL,
+    pitusr integer NOT NULL,
+    wifisess integer NOT NULL,
+    yr_sub integer NOT NULL
+);
+
+CREATE INDEX libname2014_idx ON pls_fy2014_pupld14a (libname);
+CREATE INDEX stabr2014_idx ON pls_fy2014_pupld14a (stabr);
+CREATE INDEX city2014_idx ON pls_fy2014_pupld14a (city);
+CREATE INDEX visits2014_idx ON pls_fy2014_pupld14a (visits);
+
+COPY pls_fy2014_pupld14a
+FROM 'C:\Users\User\Desktop\Code College\PostgreSQL\Analysis\pls_fy2014_pupld14a.csv'
+WITH (FORMAT CSV, HEADER);
+
+
+-- Listing 8-2: Creating and filling the 2009 Public Libraries Survey table
+
+CREATE TABLE pls_fy2009_pupld09a (
+    stabr varchar(2) NOT NULL,
+    fscskey varchar(6) CONSTRAINT fscskey2009_key PRIMARY KEY,
+    libid varchar(20) NOT NULL,
+    libname varchar(100) NOT NULL,
+    address varchar(35) NOT NULL,
+    city varchar(20) NOT NULL,
+    zip varchar(5) NOT NULL,
+    zip4 varchar(4) NOT NULL,
+    cnty varchar(20) NOT NULL,
+    phone varchar(10) NOT NULL,
+    c_relatn varchar(2) NOT NULL,
+    c_legbas varchar(2) NOT NULL,
+    c_admin varchar(2) NOT NULL,
+    geocode varchar(3) NOT NULL,
+    lsabound varchar(1) NOT NULL,
+    startdat varchar(10),
+    enddate varchar(10),
+    popu_lsa integer NOT NULL,
+    centlib integer NOT NULL,
+    branlib integer NOT NULL,
+    bkmob integer NOT NULL,
+    master numeric(8,2) NOT NULL,
+    libraria numeric(8,2) NOT NULL,
+    totstaff numeric(8,2) NOT NULL,
+    locgvt integer NOT NULL,
+    stgvt integer NOT NULL,
+    fedgvt integer NOT NULL,
+    totincm integer NOT NULL,
+    salaries integer,
+    benefit integer,
+    staffexp integer,
+    prmatexp integer NOT NULL,
+    elmatexp integer NOT NULL,
+    totexpco integer NOT NULL,
+    totopexp integer NOT NULL,
+    lcap_rev integer NOT NULL,
+    scap_rev integer NOT NULL,
+    fcap_rev integer NOT NULL,
+    cap_rev integer NOT NULL,
+    capital integer NOT NULL,
+    bkvol integer NOT NULL,
+    ebook integer NOT NULL,
+    audio integer NOT NULL,
+    video integer NOT NULL,
+    databases integer NOT NULL,
+    subscrip integer NOT NULL,
+    hrs_open integer NOT NULL,
+    visits integer NOT NULL,
+    referenc integer NOT NULL,
+    regbor integer NOT NULL,
+    totcir integer NOT NULL,
+    kidcircl integer NOT NULL,
+    loanto integer NOT NULL,
+    loanfm integer NOT NULL,
+    totpro integer NOT NULL,
+    totatten integer NOT NULL,
+    gpterms integer NOT NULL,
+    pitusr integer NOT NULL,
+    yr_sub integer NOT NULL,
+    obereg varchar(2) NOT NULL,
+    rstatus integer NOT NULL,
+    statstru varchar(2) NOT NULL,
+    statname varchar(2) NOT NULL,
+    stataddr varchar(2) NOT NULL,
+    longitud numeric(10,7) NOT NULL,
+    latitude numeric(10,7) NOT NULL,
+    fipsst varchar(2) NOT NULL,
+    fipsco varchar(3) NOT NULL
+);
+
+CREATE INDEX libname2009_idx ON pls_fy2009_pupld09a (libname);
+CREATE INDEX stabr2009_idx ON pls_fy2009_pupld09a (stabr);
+CREATE INDEX city2009_idx ON pls_fy2009_pupld09a (city);
+CREATE INDEX visits2009_idx ON pls_fy2009_pupld09a (visits);
+
+COPY pls_fy2009_pupld09a
+FROM 'C:\Users\User\Desktop\Code College\PostgreSQL\Analysis\pls_fy2009_pupld09a.csv'
+WITH (FORMAT CSV, HEADER);
+
+-- Listing 8-3: Using count() for table row counts
+
+SELECT count(*)
+FROM pls_fy2014_pupld14a;
+
+SELECT count(*)
+FROM pls_fy2009_pupld09a;
+
+-- Listing 8-4: Using count() for the number of values in a column
+
+SELECT count(salaries)
+FROM pls_fy2014_pupld14a;
+
+-- Listing 8-5: Using count() for the number of distinct values in a column
+
+SELECT count(libname)
+FROM pls_fy2014_pupld14a;
+
+SELECT count(DISTINCT libname)
+FROM pls_fy2014_pupld14a;
+
+-- Bonus: find duplicate libnames
+SELECT libname, count(libname)
+FROM pls_fy2014_pupld14a
+GROUP BY libname
+ORDER BY count(libname) DESC;
+
+-- Bonus: see location of every Oxford Public Library
+SELECT libname, city, stabr
+FROM pls_fy2014_pupld14a
+WHERE libname = 'OXFORD PUBLIC LIBRARY';
+
+-- Listing 8-6: Finding the most and fewest visits using max() and min()
+SELECT max(visits), min(visits)
+FROM pls_fy2014_pupld14a;
+
+-- Listing 8-7: Using GROUP BY on the stabr column
+
+-- There are 56 in 2014.
+SELECT stabr
+FROM pls_fy2014_pupld14a
+GROUP BY stabr
+ORDER BY stabr;
+
+-- Bonus: there are 55 in 2009.
+SELECT stabr
+FROM pls_fy2009_pupld09a
+GROUP BY stabr
+ORDER BY stabr;
+
+-- Listing 8-8: Using GROUP BY on the city and stabr columns
+
+SELECT city, stabr
+FROM pls_fy2014_pupld14a
+GROUP BY city, stabr
+ORDER BY city, stabr;
+
+-- Bonus: We can count some of the combos
+SELECT city, stabr, count(*)
+FROM pls_fy2014_pupld14a
+GROUP BY city, stabr
+ORDER BY count(*) DESC;
+
+-- Listing 8-9: GROUP BY with count() on the stabr column
+
+SELECT stabr, count(*)
+FROM pls_fy2014_pupld14a
+GROUP BY stabr
+ORDER BY count(*) DESC;
+
+-- Listing 8-10: GROUP BY with count() on the stabr and stataddr columns
+
+SELECT stabr, stataddr, count(*)
+FROM pls_fy2014_pupld14a
+GROUP BY stabr, stataddr
+ORDER BY stabr ASC, count(*) DESC;
+
+-- Listing 8-11: Using the sum() aggregate function to total visits to
+-- libraries in 2014 and 2009
+
+-- 2014
+SELECT sum(visits) AS visits_2014
+FROM pls_fy2014_pupld14a
+WHERE visits >= 0;
+
+-- 2009
+SELECT sum(visits) AS visits_2009
+FROM pls_fy2009_pupld09a
+WHERE visits >= 0;
+
+-- Listing 8-12: Using sum() to total visits on joined 2014 and 2009 library tables
+
+SELECT sum(pls14.visits) AS visits_2014,
+       sum(pls09.visits) AS visits_2009
+FROM pls_fy2014_pupld14a pls14 JOIN pls_fy2009_pupld09a pls09
+ON pls14.fscskey = pls09.fscskey
+WHERE pls14.visits >= 0 AND pls09.visits >= 0;
+
+-- Listing 8-13: Using GROUP BY to track percent change in library visits by state
+
+SELECT pls14.stabr,
+       sum(pls14.visits) AS visits_2014,
+       sum(pls09.visits) AS visits_2009,
+       round( (CAST(sum(pls14.visits) AS decimal(10,1)) - sum(pls09.visits)) /
+                    sum(pls09.visits) * 100, 2 ) AS pct_change
+FROM pls_fy2014_pupld14a pls14 JOIN pls_fy2009_pupld09a pls09
+ON pls14.fscskey = pls09.fscskey
+WHERE pls14.visits >= 0 AND pls09.visits >= 0
+GROUP BY pls14.stabr
+ORDER BY pct_change DESC;
+
+-- Listing 8-14: Using HAVING to filter the results of an aggregate query
+
+SELECT pls14.stabr,
+       sum(pls14.visits) AS visits_2014,
+       sum(pls09.visits) AS visits_2009,
+       round( (CAST(sum(pls14.visits) AS decimal(10,1)) - sum(pls09.visits)) /
+                    sum(pls09.visits) * 100, 2 ) AS pct_change
+FROM pls_fy2014_pupld14a pls14 JOIN pls_fy2009_pupld09a pls09
+ON pls14.fscskey = pls09.fscskey
+WHERE pls14.visits >= 0 AND pls09.visits >= 0
+GROUP BY pls14.stabr
+HAVING sum(pls14.visits) > 50000000
+ORDER BY pct_change DESC;
+
+
+-- Listing 9-1: Importing the FSIS Meat, Poultry, and Egg Inspection Directory
+-- https://catalog.data.gov/dataset/meat-poultry-and-egg-inspection-directory-by-establishment-name
+
+CREATE TABLE meat_poultry_egg_inspect (
+    est_number varchar(50) CONSTRAINT est_number_key PRIMARY KEY,
+    company varchar(100),
+    street varchar(100),
+    city varchar(30),
+    st varchar(2),
+    zip varchar(5),
+    phone varchar(14),
+    grant_date date,
+    activities text,
+    dbas text
+);
+
+COPY meat_poultry_egg_inspect
+FROM 'C:\Users\User\Desktop\Code College\PostgreSQL\Analysis\MPI_Directory_by_Establishment_Name.csv'
+WITH (FORMAT CSV, HEADER, DELIMITER ',');
+
+CREATE INDEX company_idx ON meat_poultry_egg_inspect (company);
+
+-- Count the rows imported:
+SELECT count(*) FROM meat_poultry_egg_inspect;
+
+-- Listing 9-2: Finding multiple companies at the same address
+SELECT company,
+       street,
+       city,
+       st,
+       count(*) AS address_count
+FROM meat_poultry_egg_inspect
+GROUP BY company, street, city, st
+HAVING count(*) > 1
+ORDER BY company, street, city, st;
+
+-- Listing 9-3: Grouping and counting states
+SELECT st, 
+       count(*) AS st_count
+FROM meat_poultry_egg_inspect
+GROUP BY st
+ORDER BY st;
+
+-- Listing 9-4: Using IS NULL to find missing values in the st column
+SELECT est_number,
+       company,
+       city,
+       st,
+       zip
+FROM meat_poultry_egg_inspect
+WHERE st IS NULL;
+
+-- Listing 9-5: Using GROUP BY and count() to find inconsistent company names
+
+SELECT company,
+       count(*) AS company_count
+FROM meat_poultry_egg_inspect
+GROUP BY company
+ORDER BY company ASC;
+
+-- Listing 9-6: Using length() and count() to test the zip column
+
+SELECT length(zip),
+       count(*) AS length_count
+FROM meat_poultry_egg_inspect
+GROUP BY length(zip)
+ORDER BY length(zip) ASC;
+
+-- Listing 9-7: Filtering with length() to find short zip values
+
+SELECT st,
+       count(*) AS st_count
+FROM meat_poultry_egg_inspect
+WHERE length(zip) < 5
+GROUP BY st
+ORDER BY st ASC;
+
+-- Listing 9-8: Backing up a table
+
+CREATE TABLE meat_poultry_egg_inspect_backup AS
+SELECT * FROM meat_poultry_egg_inspect;
+
+-- Check number of records:
+SELECT 
+    (SELECT count(*) FROM meat_poultry_egg_inspect) AS original,
+    (SELECT count(*) FROM meat_poultry_egg_inspect_backup) AS backup;
+
+-- Listing 9-9: Creating and filling the st_copy column with ALTER TABLE and UPDATE
+
+ALTER TABLE meat_poultry_egg_inspect ADD COLUMN st_copy varchar(2);
+
+UPDATE meat_poultry_egg_inspect
+SET st_copy = st;
+
+-- Listing 9-10: Checking values in the st and st_copy columns
+
+SELECT st,
+       st_copy
+FROM meat_poultry_egg_inspect
+ORDER BY st;
+
+-- Listing 9-11: Updating the st column for three establishments
+
+UPDATE meat_poultry_egg_inspect
+SET st = 'MN'
+WHERE est_number = 'V18677A';
+
+UPDATE meat_poultry_egg_inspect
+SET st = 'AL'
+WHERE est_number = 'M45319+P45319';
+
+UPDATE meat_poultry_egg_inspect
+SET st = 'WI'
+WHERE est_number = 'M263A+P263A+V263A';
+
+-- Listing 9-12: Restoring original st column values
+
+-- Restoring from the column backup
+UPDATE meat_poultry_egg_inspect
+SET st = st_copy;
+
+-- Restoring from the table backup
+UPDATE meat_poultry_egg_inspect original
+SET st = backup.st
+FROM meat_poultry_egg_inspect_backup backup
+WHERE original.est_number = backup.est_number; 
+
+-- Listing 9-13: Creating and filling the company_standard column
+
+ALTER TABLE meat_poultry_egg_inspect ADD COLUMN company_standard varchar(100);
+
+UPDATE meat_poultry_egg_inspect
+SET company_standard = company;
+
+-- Listing 9-14: Use UPDATE to modify field values that match a string
+
+UPDATE meat_poultry_egg_inspect
+SET company_standard = 'Armour-Eckrich Meats'
+WHERE company LIKE 'Armour%';
+
+SELECT company, company_standard
+FROM meat_poultry_egg_inspect
+WHERE company LIKE 'Armour%';
+
+-- Listing 9-15: Creating and filling the zip_copy column
+
+ALTER TABLE meat_poultry_egg_inspect ADD COLUMN zip_copy varchar(5);
+
+UPDATE meat_poultry_egg_inspect
+SET zip_copy = zip;
+
+-- Listing 9-16: Modify codes in the zip column missing two leading zeros
+
+UPDATE meat_poultry_egg_inspect
+SET zip = '00' || zip
+WHERE st IN('PR','VI') AND length(zip) = 3;
+
+-- Listing 9-17: Modify codes in the zip column missing one leading zero
+
+UPDATE meat_poultry_egg_inspect
+SET zip = '0' || zip
+WHERE st IN('CT','MA','ME','NH','NJ','RI','VT') AND length(zip) = 4;
+
+-- Listing 9-18: Creating and filling a state_regions table
+
+CREATE TABLE state_regions (
+    st varchar(2) CONSTRAINT st_key PRIMARY KEY,
+    region varchar(20) NOT NULL
+);
+
+COPY state_regions
+FROM 'C:\Users\User\Desktop\Code College\PostgreSQL\Analysis\state_regions.csv'
+WITH (FORMAT CSV, HEADER, DELIMITER ',');
+
+-- Listing 9-19: Adding and updating an inspection_date column
+
+ALTER TABLE meat_poultry_egg_inspect ADD COLUMN inspection_date date;
+
+UPDATE meat_poultry_egg_inspect inspect
+SET inspection_date = '2019-12-01'
+WHERE EXISTS (SELECT state_regions.region
+              FROM state_regions
+              WHERE inspect.st = state_regions.st 
+                    AND state_regions.region = 'New England');
+
+-- Listing 9-20: Viewing updated inspection_date values
+
+SELECT st, inspection_date
+FROM meat_poultry_egg_inspect
+GROUP BY st, inspection_date
+ORDER BY st;
+
+-- Listing 9-21: Delete rows matching an expression
+
+DELETE FROM meat_poultry_egg_inspect
+WHERE st IN('PR','VI');
+
+-- Listing 9-22: Remove a column from a table using DROP
+
+ALTER TABLE meat_poultry_egg_inspect DROP COLUMN zip_copy;
+
+-- Listing 9-23: Remove a table from a database using DROP
+
+DROP TABLE meat_poultry_egg_inspect_backup;
+
+-- Listing 9-24: Demonstrating a transaction block
+
+-- Start transaction and perform update
+START TRANSACTION;
+
+UPDATE meat_poultry_egg_inspect
+SET company = 'AGRO Merchantss Oakland LLC'
+WHERE company = 'AGRO Merchants Oakland, LLC';
+
+-- view changes
+SELECT company
+FROM meat_poultry_egg_inspect
+WHERE company LIKE 'AGRO%'
+ORDER BY company;
+
+-- Revert changes
+ROLLBACK;
+
+-- See restored state
+SELECT company
+FROM meat_poultry_egg_inspect
+WHERE company LIKE 'AGRO%'
+ORDER BY company;
+
+-- Alternately, commit changes at the end:
+START TRANSACTION;
+
+UPDATE meat_poultry_egg_inspect
+SET company = 'AGRO Merchants Oakland LLC'
+WHERE company = 'AGRO Merchants Oakland, LLC';
+
+COMMIT;
+
+-- Listing 9-25: Backing up a table while adding and filling a new column
+
+CREATE TABLE meat_poultry_egg_inspect_backup AS
+SELECT *,
+       '2018-02-07'::date AS reviewed_date
+FROM meat_poultry_egg_inspect;
+
+-- Listing 9-26: Swapping table names using ALTER TABLE
+
+ALTER TABLE meat_poultry_egg_inspect RENAME TO meat_poultry_egg_inspect_temp;
+ALTER TABLE meat_poultry_egg_inspect_backup RENAME TO meat_poultry_egg_inspect;
+ALTER TABLE meat_poultry_egg_inspect_temp RENAME TO meat_poultry_egg_inspect_backup;
+
+
+
+
+
+
